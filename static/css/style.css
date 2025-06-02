@@ -1084,8 +1084,8 @@ body {
 
 /* Footer */
 .footer {
-    background-color: var(--dark-gray);
-    color: var(--white);
+    background-color: var(--secondary-magenta);
+    color: var(--primary-magenta);
     text-align: center;
     padding: 30px 0;
 }
