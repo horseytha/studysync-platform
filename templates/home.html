@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Study Group Platform{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="hero-container">
+        <div class="hero-left">
+            <div class="hero-logo">
+                <img src="{% static 'images/logo.svg' %}" alt="StudySync Logo" class="logo-image" />
+                <h2 class="logo-text">StudySync</h2>
+            </div>
+            <div class="hero-text-content">
+                <h1 class="hero-title">Connect. Study. Succeed.</h1>
+                <p class="hero-subtitle">Join study groups, share knowledge, and achieve your academic goals together with StudySync</p>
+                <div class="hero-features">
+                    <div class="feature-point">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Find study partners instantly</span>
+                    </div>
+                    <div class="feature-point">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Share notes and resources</span>
+                    </div>
+                    <div class="feature-point">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Schedule group sessions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+        <div class="hero-right">
+            <div class="auth-card-hero">
+                <h3>Get Started Today</h3>
+                <p>Join thousands of students already studying smarter</p>
+
+                <div class="auth-buttons">
+                    <a href="/accounts/login/" class="btn btn-primary btn-full">Sign In</a>
+                    <a href="/register/" class="btn btn-secondary btn-full">Create Account</a>
+                </div>
+
+                <div class="auth-divider">
+                    <span>or</span>
+                </div>
+
+                <div class="quick-actions">
+                    <a href="/groups/" class="quick-link">
+                        <i class="fas fa-users"></i>
+                        <span>Browse Groups</span>
+                    </a>
+                    <a href="/groups/create/" class="quick-link">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Create Group</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="features-section">
+    <!-- Decorative Background Shapes -->
+    <div class="decorative-shapes">
+        <!-- Rounded Rectangles -->
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+        <div class="decorative-shape"></div>
+
+        <!-- Decorative Circles -->
+        <div class="decorative-circle"></div>
+        <div class="decorative-circle"></div>
+        <div class="decorative-circle"></div>
+        <div class="decorative-circle"></div>
+        <div class="decorative-circle"></div>
+        <div class="decorative-circle"></div>
+        <div class="decorative-circle"></div>
+        <div class="decorative-circle"></div>
+        <div class="decorative-circle"></div>
+        <div class="decorative-circle"></div>
+        <div class="decorative-circle"></div>
+        <div class="decorative-circle"></div>
+        <div class="decorative-circle"></div>
+        <div class="decorative-circle"></div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">Platform Features</h2>
+
+        
+        <div class="carousel-container">
+            <div class="carousel-wrapper">
+                <div class="carousel-track" id="carouselTrack">
+
+                    <div class="feature-slide active">
+                        <a href="{% url 'groups_list' %}" class="feature-card-3d">
+                            <div class="feature-image" style="background-image: url('https://t4.ftcdn.net/jpg/05/39/10/47/360_F_539104776_BchIZKRhIUXDY0ZaVHxaoIDvRa2eAG3d.jpg')">
+                                <!-- You can add your image here -->
+                                <div class="feature-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Create & Join Groups</h3>
+                                <p>Form study groups for specific subjects or exams. Connect with like-minded students and collaborate effectively.</p>
+                                <div class="feature-cta">
+                                    <span class="cta-text">Browse Groups <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="feature-slide">
+                        <a href="{% url 'groups_list' %}" class="feature-card-3d">
+                            <div class="feature-image" style="background-image: url('https://www.kahootz.com/wp-content/uploads/2017/12/discussion.jpg')">
+                                <!-- You can add your image here -->
+                                <div class="feature-icon">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Discussion Forums</h3>
+                                <p>Engage in meaningful discussions, ask questions, and share insights with your study group members.</p>
+                                <div class="feature-cta">
+                                    <span class="cta-text">Join Discussions <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="feature-slide">
+                        <a href="{% url 'groups_list' %}" class="feature-card-3d">
+                            <div class="feature-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBNJQ302og_fMic6cD4pJlTzhzrfLinYgdEw&s')">
+                                <!-- You can add your image here -->
+                                <div class="feature-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                            </div>
+                            <div class="feature-content">
+                                <h3>File Sharing & Notes</h3>
+                                <p>Share study materials, notes, and resources seamlessly within your groups. Keep everything organized.</p>
+                                <div class="feature-cta">
+                                    <span class="cta-text">Share Resources <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="feature-slide">
+                        <a href="{% url 'calendar' %}" class="feature-card-3d">
+                            <div class="feature-image" style="background-image: url('https://t4.ftcdn.net/jpg/05/37/15/91/360_F_537159163_HirNJrjCFcD22mqhMUANbGtEBAqt5GN4.jpg')">
+                                <!-- You can add your image here -->
+                                <div class="feature-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Study Sessions</h3>
+                                <p>Schedule and manage study sessions and meetings. Never miss an important group study time.</p>
+                                <div class="feature-cta">
+                                    <span class="cta-text">View Calendar <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="feature-slide">
+                        <a href="{% url 'calendar' %}" class="feature-card-3d">
+                            <div class="feature-image" style="background-image: url('https://media.istockphoto.com/id/1356810087/photo/event-planners-use-timetables-and-agendas-to-arrange-and-schedule-events-on-the-office-table.jpg?s=612x612&w=0&k=20&c=51skwC7R-OzzpIGjqdFX4bG-b6tywqJ2gDp5YOqUfbM=')">
+                                <!-- You can add your image here -->
+                                <div class="feature-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Calendar Integration</h3>
+                                <p>Track important dates, exam schedules, and deadlines. Stay organized and prepared.</p>
+                                <div class="feature-cta">
+                                    <span class="cta-text">Manage Schedule <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="feature-slide">
+                        <a href="{% url 'create_group' %}" class="feature-card-3d">
+                            <div class="feature-image" style="background-image: url('https://static.vecteezy.com/system/resources/previews/004/118/012/non_2x/internet-safety-background-with-futuristic-style-free-vector.jpg')">
+                                <!-- You can add your image here -->
+                                <div class="feature-icon">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Group Moderation</h3>
+                                <p>Group leaders can moderate discussions and manage membership to maintain a productive environment.</p>
+                                <div class="feature-cta">
+                                    <span class="cta-text">Create Group <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <div class="carousel-controls">
+                <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next-btn" onclick="moveCarousel(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+                <span class="indicator active" onclick="goToSlide(0)"></span>
+                <span class="indicator" onclick="goToSlide(1)"></span>
+                <span class="indicator" onclick="goToSlide(2)"></span>
+                <span class="indicator" onclick="goToSlide(3)"></span>
+                <span class="indicator" onclick="goToSlide(4)"></span>
+                <span class="indicator" onclick="goToSlide(5)"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Start Your Study Journey?</h2>
+            <p>Join thousands of students who are already studying smarter, not harder.</p>
+            <a href="#" class="btn btn-primary btn-large">Get Started Today</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

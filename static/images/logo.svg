@@ -1,0 +1,24 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="30" cy="30" r="28" fill="#C4A4B0" stroke="#8B1538" stroke-width="2"/>
+
+  <!-- Inner Circle for depth -->
+  <circle cx="30" cy="30" r="24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+  <!-- StudySync Icon - Books and Sync Symbol -->
+  <!-- Book Stack -->
+  <rect x="18" y="22" width="12" height="2" rx="1" fill="#FFFFFF"/>
+  <rect x="18" y="26" width="12" height="2" rx="1" fill="#FFFFFF"/>
+  <rect x="18" y="30" width="12" height="2" rx="1" fill="#FFFFFF"/>
+
+  <!-- Sync Arrows -->
+  <path d="M35 20 L42 24 L35 28 M42 24 L38 24" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M42 36 L35 32 L42 28 M35 32 L39 32" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Connection Dots -->
+  <circle cx="32" cy="24" r="1.5" fill="#FFFFFF"/>
+  <circle cx="32" cy="32" r="1.5" fill="#FFFFFF"/>
+
+  <!-- Subtle highlight -->
+  <circle cx="30" cy="30" r="28" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.5" opacity="0.3"/>
+</svg>

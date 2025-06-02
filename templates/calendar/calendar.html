@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Calendar - StudySync{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <div class="page-title-with-logo">
+            <div class="page-logo">
+                <img src="{% static 'images/logo.svg' %}" alt="StudySync Logo" class="logo-image">
+                <div class="logo-text">StudySync</div>
+            </div>
+            <h1 class="page-title">
+                <i class="fas fa-calendar-alt"></i>
+                Study Calendar
+            </h1>
+        </div>
+        <p class="page-subtitle">Keep track of all your StudySync sessions and important dates</p>
+    </div>
+</div>
+
+<div class="calendar-section">
+    <div class="container">
+        <div class="calendar-header">
+            <h2 class="current-month">{{ current_month }}</h2>
+            {% if user.is_authenticated %}
+                <a href="#" class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Schedule Session
+                </a>
+            {% endif %}
+        </div>
+        
+        <div class="calendar-content">
+            <div class="calendar-grid">
+                <!-- Calendar Days Header -->
+                <div class="calendar-day-header">Sun</div>
+                <div class="calendar-day-header">Mon</div>
+                <div class="calendar-day-header">Tue</div>
+                <div class="calendar-day-header">Wed</div>
+                <div class="calendar-day-header">Thu</div>
+                <div class="calendar-day-header">Fri</div>
+                <div class="calendar-day-header">Sat</div>
+                
+                <!-- Calendar Days (simplified for now) -->
+                {% for day in "1234567890123456789012345678901234567"|make_list %}
+                    <div class="calendar-day">
+                        <span class="day-number">{{ forloop.counter }}</span>
+                        <!-- Sessions for this day would go here -->
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="sessions-sidebar">
+            <h3>
+                {% if user.is_authenticated %}
+                    Your Upcoming Sessions
+                {% else %}
+                    All Upcoming Sessions
+                {% endif %}
+            </h3>
+            
+            <div class="sessions-list">
+                {% if user.is_authenticated %}
+                    {% for session in user_sessions %}
+                        <div class="session-item">
+                            <div class="session-date">
+                                <div class="date-day">{{ session.date_time|date:"d" }}</div>
+                                <div class="date-month">{{ session.date_time|date:"M" }}</div>
+                            </div>
+                            <div class="session-details">
+                                <h4>{{ session.title }}</h4>
+                                <p class="session-group">{{ session.group.name }}</p>
+                                <p class="session-time">
+                                    <i class="fas fa-clock"></i>
+                                    {{ session.date_time|date:"g:i A" }}
+                                </p>
+                                {% if session.location %}
+                                    <p class="session-location">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        {{ session.location }}
+                                    </p>
+                                {% endif %}
+                            </div>
+                            <div class="session-actions">
+                                <a href="{% url 'group_detail' session.group.pk %}" class="btn btn-sm btn-outline">View Group</a>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="empty-state-small">
+                            <i class="fas fa-calendar-plus"></i>
+                            <p>No upcoming sessions</p>
+                            <a href="{% url 'groups_list' %}" class="btn btn-sm btn-primary">Browse Groups</a>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {% for session in sessions %}
+                        <div class="session-item">
+                            <div class="session-date">
+                                <div class="date-day">{{ session.date_time|date:"d" }}</div>
+                                <div class="date-month">{{ session.date_time|date:"M" }}</div>
+                            </div>
+                            <div class="session-details">
+                                <h4>{{ session.title }}</h4>
+                                <p class="session-group">{{ session.group.name }}</p>
+                                <p class="session-time">
+                                    <i class="fas fa-clock"></i>
+                                    {{ session.date_time|date:"g:i A" }}
+                                </p>
+                            </div>
+                            <div class="session-actions">
+                                <a href="{% url 'group_detail' session.group.pk %}" class="btn btn-sm btn-outline">View Group</a>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="empty-state-small">
+                            <i class="fas fa-calendar"></i>
+                            <p>No sessions this month</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

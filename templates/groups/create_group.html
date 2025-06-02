@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Create Study Group - StudySync{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <div class="page-title-with-logo">
+            <div class="page-logo">
+                <img src="{% static 'images/logo.svg' %}" alt="StudySync Logo" class="logo-image">
+                <div class="logo-text">StudySync</div>
+            </div>
+            <h1 class="page-title">
+                <i class="fas fa-plus-circle"></i>
+                Create Study Group
+            </h1>
+        </div>
+        <p class="page-subtitle">Start your own study group and connect with like-minded students</p>
+    </div>
+</div>
+
+<div class="create-group-section">
+    <div class="container">
+        <div class="create-group-container">
+            <div class="form-card">
+                <div class="form-header">
+                    <h2>Group Details</h2>
+                    <p>Fill in the information below to create your study group</p>
+                </div>
+
+                <form method="post" class="create-group-form">
+                    {% csrf_token %}
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="{{ form.name.id_for_label }}">
+                                <i class="fas fa-users"></i>
+                                {{ form.name.label }}
+                            </label>
+                            {{ form.name }}
+                            {% if form.name.help_text %}
+                                <small class="form-help">{{ form.name.help_text }}</small>
+                            {% endif %}
+                            {% if form.name.errors %}
+                                <div class="form-errors">
+                                    {% for error in form.name.errors %}
+                                        <span class="error">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="{{ form.subject.id_for_label }}">
+                                <i class="fas fa-book"></i>
+                                {{ form.subject.label }}
+                            </label>
+                            {{ form.subject }}
+                            {% if form.subject.help_text %}
+                                <small class="form-help">{{ form.subject.help_text }}</small>
+                            {% endif %}
+                            {% if form.subject.errors %}
+                                <div class="form-errors">
+                                    {% for error in form.subject.errors %}
+                                        <span class="error">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.max_members.id_for_label }}">
+                                <i class="fas fa-user-friends"></i>
+                                {{ form.max_members.label }}
+                            </label>
+                            {{ form.max_members }}
+                            {% if form.max_members.help_text %}
+                                <small class="form-help">{{ form.max_members.help_text }}</small>
+                            {% endif %}
+                            {% if form.max_members.errors %}
+                                <div class="form-errors">
+                                    {% for error in form.max_members.errors %}
+                                        <span class="error">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="{{ form.description.id_for_label }}">
+                                <i class="fas fa-align-left"></i>
+                                {{ form.description.label }}
+                            </label>
+                            {{ form.description }}
+                            {% if form.description.help_text %}
+                                <small class="form-help">{{ form.description.help_text }}</small>
+                            {% endif %}
+                            {% if form.description.errors %}
+                                <div class="form-errors">
+                                    {% for error in form.description.errors %}
+                                        <span class="error">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group checkbox-group">
+                            <label for="{{ form.is_private.id_for_label }}" class="checkbox-label">
+                                {{ form.is_private }}
+                                <span class="checkbox-text">
+                                    <i class="fas fa-lock"></i>
+                                    {{ form.is_private.label }}
+                                </span>
+                            </label>
+                            {% if form.is_private.help_text %}
+                                <small class="form-help">{{ form.is_private.help_text }}</small>
+                            {% endif %}
+                            {% if form.is_private.errors %}
+                                <div class="form-errors">
+                                    {% for error in form.is_private.errors %}
+                                        <span class="error">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <i class="fas fa-plus-circle"></i>
+                            Create Study Group
+                        </button>
+                        <a href="{% url 'groups_list' %}" class="btn btn-secondary btn-large">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Groups
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tips-card">
+                <h3><i class="fas fa-lightbulb"></i> Tips for Success</h3>
+                <ul class="tips-list">
+                    <li><i class="fas fa-check"></i> Choose a clear, descriptive group name</li>
+                    <li><i class="fas fa-check"></i> Write a detailed description of your study goals</li>
+                    <li><i class="fas fa-check"></i> Set realistic member limits for effective collaboration</li>
+                    <li><i class="fas fa-check"></i> Consider making the group private for focused study</li>
+                    <li><i class="fas fa-check"></i> Be active and engage with your group members</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

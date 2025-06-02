@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ group.name }} - Study Group Platform{% endblock %}
+
+{% block content %}
+<div class="group-detail-header">
+    <div class="container">
+        <div class="group-info">
+            <h1 class="group-title">{{ group.name }}</h1>
+            <div class="group-meta">
+                <span class="subject-badge">{{ group.get_subject_display }}</span>
+                <span class="member-count">
+                    <i class="fas fa-users"></i>
+                    {{ group.member_count }}/{{ group.max_members }} members
+                </span>
+                <span class="created-date">
+                    <i class="fas fa-calendar"></i>
+                    Created {{ group.created_at|date:"M d, Y" }}
+                </span>
+            </div>
+        </div>
+        
+        <div class="group-actions">
+            {% if user.is_authenticated %}
+                {% if not is_member %}
+                    {% if group.member_count < group.max_members %}
+                        <a href="{% url 'join_group' group.pk %}" class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i>
+                            Join Group
+                        </a>
+                    {% else %}
+                        <span class="btn btn-disabled">Group Full</span>
+                    {% endif %}
+                {% else %}
+                    <span class="btn btn-success">
+                        <i class="fas fa-check"></i>
+                        Member
+                    </span>
+                {% endif %}
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-primary">Login to Join</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="group-detail-content">
+    <div class="container">
+        <div class="content-grid">
+            <div class="main-content">
+                <div class="section">
+                    <h2>About This Group</h2>
+                    <p class="group-description">{{ group.description }}</p>
+                </div>
+                
+                <div class="section">
+                    <h2>Upcoming Study Sessions</h2>
+                    {% if upcoming_sessions %}
+                        <div class="sessions-list">
+                            {% for session in upcoming_sessions %}
+                                <div class="session-card">
+                                    <div class="session-info">
+                                        <h4>{{ session.title }}</h4>
+                                        <p class="session-time">
+                                            <i class="fas fa-clock"></i>
+                                            {{ session.date_time|date:"M d, Y - g:i A" }}
+                                        </p>
+                                        {% if session.location %}
+                                            <p class="session-location">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                {{ session.location }}
+                                            </p>
+                                        {% endif %}
+                                        {% if session.is_online and session.meeting_link %}
+                                            <p class="session-online">
+                                                <i class="fas fa-video"></i>
+                                                Online Session
+                                            </p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="session-attendees">
+                                        <i class="fas fa-users"></i>
+                                        {{ session.attendees.count }} attending
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="empty-state-small">
+                            <i class="fas fa-calendar-plus"></i>
+                            <p>No upcoming sessions scheduled</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Group Leader</h3>
+                    <div class="leader-info">
+                        <i class="fas fa-user-crown"></i>
+                        <span>{{ group.creator.username }}</span>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Members</h3>
+                    <div class="members-list">
+                        {% for member in group.members.all %}
+                            <div class="member-item">
+                                <i class="fas fa-user"></i>
+                                <span>{{ member.username }}</span>
+                            </div>
+                        {% empty %}
+                            <p class="text-muted">No members yet</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Group Stats</h3>
+                    <div class="stats-list">
+                        <div class="stat-item">
+                            <span class="stat-label">Total Sessions:</span>
+                            <span class="stat-value">{{ group.sessions.count }}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Active Since:</span>
+                            <span class="stat-value">{{ group.created_at|date:"M Y" }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
